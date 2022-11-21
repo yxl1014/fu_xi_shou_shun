@@ -1,0 +1,25 @@
+一个优秀的通用内存分配器应具有以下特性:
+
+额外的空间损耗尽量少
+分配速度尽可能快
+尽量避免内存碎片
+缓存本地化友好
+通用性, 兼容性, 可移植性, 易调试
+
+常见malloc性能排名（从左至右性能依次提高）
+
+glibc	      google       facebook
+  |		|		|
+  |		|		|
+ptmalloc2  <  tcmalloc  <  jemalloc
+
+
+https://blog.csdn.net/wan212000/article/details/127849175
+https://blog.csdn.net/Damon_X/article/details/117021573?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EOPENSEARCH%7ERate-1-117021573-blog-127849175.pc_relevant_aa2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EOPENSEARCH%7ERate-1-117021573-blog-127849175.pc_relevant_aa2&utm_relevant_index=1
+
+bin           class-size
+chunk	      span
+  -  	      page
+  
+  当线程数量固定，不会频繁创建退出的时候， 可以使用jemalloc；反之使用tcmalloc可能是更好的选择。
+  	      
